@@ -30,5 +30,3 @@ def get_adaklar():
     for x in mycol.find():
         List.append(x)
     return List
-
-

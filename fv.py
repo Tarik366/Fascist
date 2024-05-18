@@ -355,7 +355,7 @@ async def on_message(message):
     else:
         await Bot.process_commands(message)
 
-from propaganda import *
+from propagas import *
 
 @Bot.command()
 async def propaganda(ctx):

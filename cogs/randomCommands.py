@@ -1,8 +1,7 @@
-
 from discord import Embed, ui, ButtonStyle
 from discord.ext import commands
 
-class random(commands.Cog):
+class rand(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -39,11 +38,11 @@ class random(commands.Cog):
         #     embed = Embed(title="Metehan derki", description=(random.Metehanlist[f]))
         #     await ctx.send(embed=embed)
 
-    from HaberciVatoz.propaganda import propagandalist
-
     @commands.hybrid_command()
     async def propaganda(self, ctx):
-        await ctx.send(random.random.choice(random.propagandalist))
+        import propagas
+        prop = rand.random.choice(list(propagas.propagandalist))
+        await ctx.reply(propagas.propagandalist[prop])
 
     class Menu(ui.View):
 
@@ -51,12 +50,12 @@ class random(commands.Cog):
             super().__init__()
             self.value = None
     
-    from HaberciVatoz.Seriler import getRandomSerie
+    from Seriler import getRandomSerie
 
     @commands.hybrid_command()
     async def seri(self, ctx):
-        seri = random.getRandomSerie("https://athenamanga.com/manga/list-mode/")
-        view = random.Menu()
+        seri = rand.getRandomSerie("https://athenamanga.com/manga/list-mode/")
+        view = rand.Menu()
         view.add_item(
             ui.Button(label="Sitemizden oku", style=ButtonStyle.url, url=seri['url'])
         )
@@ -65,4 +64,4 @@ class random(commands.Cog):
         await ctx.reply(embed=embed, view=view)
 
 async def setup(bot):
-    await bot.add_cog(random(bot))
+    await bot.add_cog(rand(bot))

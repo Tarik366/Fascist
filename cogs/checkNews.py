@@ -1,7 +1,7 @@
 from discord import Embed
 from discord.ext import commands, tasks
 import feedparser
-from HaberciVatoz.Functions import getSeriePicture, getSerieId, getSerieLink
+from Functions import getSeriePicture, getSerieId, getSerieLink
 from bs4 import BeautifulSoup
 import requests
 
@@ -40,7 +40,7 @@ class News(): # create a class for our cog that inherits from commands.Cog
         lkkl = feedparser.parse(f"{News.sites[0]}feed/")
         entry = lkkl.entries[0]
 
-        le = open("HaberciVatoz/lastEntry.txt", "r", encoding="utf-8")
+        le = open("lastEntry.txt", "r", encoding="utf-8")
         ar = le.read()
 
         class n:

@@ -8,13 +8,13 @@ from discord import * # type: ignore
 from discord.ext import commands, tasks
 import json
 import datetime as dt
-from HaberciVatoz.keep_alive import keep_alive
+from keep_alive import keep_alive
 
 from dotenv.main import load_dotenv
 load_dotenv()
 
 # Discord bot settings
-cogs = ["HaberciVatoz.cogs.buttons", "HaberciVatoz.cogs.imageRenderer", "HaberciVatoz.cogs.pp", "HaberciVatoz.cogs.selectFromList", "HaberciVatoz.cogs.random"]
+cogs = ["cogs.buttons", "cogs.imageRenderer", "cogs.pp", "cogs.selectFromList", "cogs.randomCommands"]
 
 class Client(commands.Bot):
     def __init__(self):
@@ -38,15 +38,21 @@ class Client(commands.Bot):
 client = Client()
 Bot = client
 
-from HaberciVatoz.cogs.checkNews import News as News
+from cogs.checkNews import News as News
+
+@Bot.command()
+async def sync(ctx):
+    print("sync command")
+    if ctx.author.id == 618214247742308361:
+        await client.tree.sync()
+        await ctx.send('Command tree synced.')
+    else:
+        await ctx.send('You must be the owner to use this command!')
 
 @client.event
 async def on_ready():
     keep_alive()
-    demo = open("HaberciVatoz/HaberciVatoz.png")
-    await client.user.edit(username="Haberci Vatoz", avatar=demo)
-    await News.msg1(client)
-    await News.msg2(client)
+    # await News.msg1(client)
 
 @client.event
 async def on_guild_join(self, guild):
@@ -60,8 +66,6 @@ async def on_message(message):
         return
     if "alya" == message.content and message.author != Bot.user:
         await message.channel.send("ALYA-SAMA!!!!!!")
-    if "tavşan" == message.content and message.author != Bot.user:
-        await message.channel.send("TAVŞANNNN!!!!")
     else:
         await Bot.process_commands(message)
 
@@ -76,3 +80,5 @@ def application():
         print("\n\n\nBLOCKED BY RATE LIMITS\nRESTARTING NOW\n\n\n")
         os.system("python restarter.py")
         os.system('kill 1')
+
+application()
