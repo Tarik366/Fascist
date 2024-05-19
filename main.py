@@ -52,7 +52,7 @@ async def sync(ctx):
 @client.event
 async def on_ready():
     keep_alive()
-    # await News.msg1(client)
+    await News.msg1(client)
 
 @client.event
 async def on_guild_join(self, guild):
@@ -74,7 +74,6 @@ if discord.ext.commands.errors.CommandNotFound:
 
 def application():
     try:
-        print(os.environ['discord_token'])
         client.run(os.environ['discord_token'])
     except discord.errors.HTTPException:
         print("\n\n\nBLOCKED BY RATE LIMITS\nRESTARTING NOW\n\n\n")
