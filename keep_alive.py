@@ -28,7 +28,7 @@ def adaklarSite():
     return render_template("adaklar.html", AdakList=AdakList)"""
 
 def run():
-    app.run(host='0.0.0.0')
+    app.run()
 
 # Importing the library
 import psutil
