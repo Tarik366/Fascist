@@ -1,1 +1,1 @@
-web: gunicorn -b : main
+web: gunicorn -b :8000 main
