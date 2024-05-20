@@ -28,19 +28,9 @@ def adaklarSite():
     return render_template("adaklar.html", AdakList=AdakList)
 
 def run():
-    app.run()
+    app.run(port=5001)
 
 # Importing the library
-import psutil
-import time
-import os
-
-def ram():
-    x = False
-    while x == False:
-        ea = psutil.Process(os.getpid()).memory_info().rss / 1024 ** 2
-        print(ea)
-        time.sleep(60)
 
 def keep_alive():
     '''
