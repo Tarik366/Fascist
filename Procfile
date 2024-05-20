@@ -1,1 +1,1 @@
-web: gunicorn -b :$PORT 'keep_alive:app'
+web: gunicorn -b :$PORT main

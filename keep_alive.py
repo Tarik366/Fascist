@@ -20,16 +20,15 @@ def images():
 from dotenv.main import load_dotenv
 load_dotenv()
 
-"""from mongodb import get_adaklar
+from mongodb import get_adaklar
 
 @app.route("/adaklar")
 def adaklarSite():
     AdakList = get_adaklar()
-    return render_template("adaklar.html", AdakList=AdakList)"""
+    return render_template("adaklar.html", AdakList=AdakList)
 
 def run():
-    if __name__ == "__main__":
-        app.run()
+    app.run()
 
 # Importing the library
 import psutil
