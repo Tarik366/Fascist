@@ -21,6 +21,7 @@ from dotenv.main import load_dotenv
 load_dotenv()
 
 from mongodb import get_adaklar
+import os
 
 @app.route("/adaklar")
 def adaklarSite():
@@ -28,7 +29,7 @@ def adaklarSite():
     return render_template("adaklar.html", AdakList=AdakList)
 
 def run():
-    app.run(port=5001)
+    app.run(port=os.environ['fport'])
 
 # Importing the library
 
